@@ -1,0 +1,75 @@
+﻿@using Abp.Extensions
+@using YTMyprocte.Customers
+@model YTMyprocte.Web.Models.StoreManagers.CreateOrUpdateStoreManagerViewModel
+
+@section styles
+    {
+    <link href="~/lib/jquery-easyui/themes/color.css" rel="stylesheet" />
+    <link href="~/lib/jquery-easyui/themes/icon.css" rel="stylesheet" />
+    <link href="~/lib/jquery-easyui/themes/default/easyui.css" rel="stylesheet" />
+    <link href="~/lib/jquery-easyui/demo/demo.css" rel="stylesheet" />
+}
+
+<script src="~/view-resources/Views/StoreManagers/index.js"></script>
+
+<script src="~/lib/jquery-easyui/extensions/datagrid-cellediting.js"></script>
+
+
+<div id="dlg" class="easyui-tabs" data-options="border:false">
+    <div title="基本信息" style="margin:10px 20px;display:none;">
+        <a href="javascript:;" class="easyui-linkbutton" iconCls="icon-add" plain="true" id="btnacd">选取物料</a>
+        <form id="fm" method="post" novalidate>
+            @if (Model.IsEditMode)
+            {
+                <input type="hidden" name="Id" value="@Model.Id" />
+                <input type="hidden" name="MaterielId" value="@Model.MaterielId" />
+            }
+            <div class="fitem" style="padding:5px 2px">
+                <label>编码:</label>
+                <input name="Code" value="@(Model.IsEditMode ? Model.Code :"" )" class="easyui-textbox" required maxlength="32">
+
+            </div>
+            <div class="fitem" style="padding:5px 2px">
+                <label>商品名称:</label>
+                <input name="MaterielName" value="@(Model.IsEditMode ? Model.MaterielName :"" )" class="easyui-textbox" required maxlength="32">
+            </div>
+            <div class="fitem" style="padding:5px 2px">
+                <label>单位:</label>
+                <input name="MaterielUnit" value="@(Model.IsEditMode ? Model.MaterielUnit :"" )" class="easyui-textbox" required maxlength="32">
+            </div>
+            <div class="fitem" style="padding:5px 2px">
+                <label id="num1">价格:</label>
+                <input id="add1" type="text" name="MaterielMoney" value="@Model.MaterielMoney" class="easyui-textbox" required maxlength="32">
+            </div>
+            <div class="fitem" style="padding:5px 2px">
+                <label id="num2">当前库存:</label>
+                <input id="add2" type="text" name="CurrentAmount" value="@Model.CurrentAmount" class="easyui-textbox">
+
+            </div>
+            <div class="fitem" style="padding:5px 2px">
+                <label id="num3">总金额:</label>
+                <input id="sum" type="text" name="CountMoney" value="@Model.CountMoney" class="easyui-textbox" required maxlength="32">
+            </div>
+            <script src="~/view-resources/Views/StoreManagers/JavaScript.js" asp-append-version="true"></script>
+        </form>
+    </div>
+</div>
+
+<div id="dlggc" class="easyui-dialog" style="width:900px;height:500px;" modal="true" closed="true" buttons="#dlggc-buttons">
+    <div id="toolbar1">
+        <form>
+            <div>
+                关键字：<input name="Filter" class="Filter">
+                物料类型<input name="Category" class="Category">
+                <a href="javascript:;" class="btn-search">查询</a>
+                <a href="javascript:;" class="btn-clean">重置</a>
+            </div>
+
+        </form>
+    </div>
+    <table id="dgc"></table>
+</div>
+<div id="dlggc-buttons">
+    <a href="javascript:;" class="easyui-linkbutton saveMinec" iconcls="icon-ok" style="width:90px">保存</a>
+    <a href="javascript:;" class="easyui-linkbutton consolec" iconcls="icon-cancel" style="width:90px">取消</a>
+</div>

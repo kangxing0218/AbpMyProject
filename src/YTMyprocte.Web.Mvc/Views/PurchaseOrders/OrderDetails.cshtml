@@ -1,0 +1,47 @@
+﻿@using YTMyprocte.Web.Startup
+@model YTMyprocte.Web.Models.PurchaseOrders.OrderDetailViewModel
+
+@{
+    ViewBag.Title = "采购订单";
+}
+
+<a href="#" class="easyui-linkbutton" plain="true" iconCls="icon-back" onclick="location='PurchaseOrders/Index'"></a>
+
+
+<h2>采购订单</h2>
+<p>采购日期：@Model.CreationTime</p>
+<p>单号：@Model.Code</p>
+<p>供应商：@Model.Supplier.SupplierName       联系电话： @Model.Supplier.PersonTel       联系地址：@Model.Supplier.SupplierAddr        订单总金额：@Model.Price</p>
+
+<table id="dg" class="easyui-datagrid" style="width:600px;"
+       toolbar="#toolbar" idField="id"
+       rownumbers="true" singleSelect="true" fitColumns="true">
+    <thead>
+
+        <tr>
+            <th field="1" width="80">物品编号</th>
+            <th field="2" width="200">物品名称</th>
+
+            <th field="4" width="80">单位</th>
+            <th field="5" width="120">采购数量</th>
+            <th field="6" width="80">采购价(元)</th>
+            <th field="7" width="120">金额(元)</th>
+        </tr>
+
+
+    </thead>
+    @foreach (var item in Model.PurchaseOrderDet)
+    {
+        <tr>
+            <td>@item.MaterielCode</td>
+            <td>@item.GoodsName</td>
+          
+            <td>@item.GoodsUnit</td>
+            <td>@item.Count</td>
+            <td>@item.UnitPrice</td>
+            <td>@item.TotalPrice</td>
+        </tr>
+    }
+</table>
+
+

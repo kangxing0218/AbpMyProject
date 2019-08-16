@@ -1,0 +1,29 @@
+﻿@using Abp.Extensions
+@using YTMyprocte.PurchaseOrders
+@model YTMyprocte.Web.Models.PurchaseOrders.CreateOrEditOrderViewModel
+
+
+<environment names="Development">
+    <script src="~/view-resources/Views/PurchaseOrders/CreateOrEditModal.js" asp-append-version="true"></script>
+</environment>
+<script src="~/lib/jquery-easyui/extensions/datagrid-cellediting.js"></script>
+
+
+
+<table id="dgc"></table>
+<div id="dgelc">
+    <div id="p" class="easyui-panel" background:#eee;"border="0">
+        <form>
+            <div>
+                <input name="Filter" class="Filter">
+                <input name="Category" class="Category">
+                <a href="javascript:;" class="btn-search">查询</a>
+                <a href="javascript:;" class="btn-clean">重置</a>
+
+            </div>
+
+        </form>
+
+    </div>
+</div>
+

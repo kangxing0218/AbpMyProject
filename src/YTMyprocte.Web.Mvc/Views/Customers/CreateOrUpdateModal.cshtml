@@ -1,0 +1,34 @@
+﻿@using Abp.Extensions
+@using YTMyprocte.Customers
+@model YTMyprocte.Web.Models.Customers.CreateOrUpdateCustomerViewModel
+
+<div id="dlg" class="easyui-tabs" data-options="border:false">
+    <div title="基本信息" style="margin:10px 20px;display:none;">
+        <form id="fm" method="post" novalidate>
+            @if (Model.IsEditMode)
+            {
+                <input type="hidden" name="Id" value="@Model.Id" />
+            }
+            <div class="fitem" style="padding:5px 2px">
+                <label>编码:</label>
+                <input type="text" id="code"  name="Code" value="@(Model.IsEditMode ? Model.Code :"" )" class="easyui-textbox" required maxlength="32" onblur="checkUsername()">
+                <span id="span1"></span>
+            </div>
+            <div class="fitem" style="padding:5px 2px">
+                <label>客户名称:</label>
+                <input name="CustomerName" value="@(Model.IsEditMode ? Model.CustomerName :"" )" class="easyui-textbox" required maxlength="32">
+            </div>
+
+            <div class="fitem" style="padding:5px 2px">
+                <label>联系方式:</label>
+                <input name="CustomerTel" value="@(Model.IsEditMode ? Model.CustomerTel :"" )" class="easyui-validatebox" data-options="required:true">
+            </div>
+            <div class="fitem" style="padding:5px 2px">
+                <label>联系地址:</label>
+                <input name="CustomerAddr" value="@(Model.IsEditMode ? Model.CustomerAddr :"" )" class="easyui-textbox" required maxlength="32">
+            </div>
+
+        </form>
+         </div>
+    </div>
+

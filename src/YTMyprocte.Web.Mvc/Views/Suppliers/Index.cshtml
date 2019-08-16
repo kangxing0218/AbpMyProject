@@ -1,0 +1,63 @@
+﻿@using Abp.Authorization.Users
+@using YTMyprocte.Web.Startup
+@using YTMyprocte.Customers
+@using Abp.Extensions
+@using YTMyprocte.Suppliers
+@model YTMyprocte.Web.Models.Suppliers.CreateOrEditSupplierViewModel
+
+@{
+    ViewBag.CurrentPageName = PageNames.Suppliers; // The menu item will be active for this page.
+}
+@section styles
+    {
+    <link href="~/lib/jquery-easyui/themes/color.css" rel="stylesheet" />
+    <link href="~/lib/jquery-easyui/themes/icon.css" rel="stylesheet" />
+    <link href="~/lib/jquery-easyui/themes/default/easyui.css" rel="stylesheet" />
+    <link href="~/lib/jquery-easyui/demo/demo.css" rel="stylesheet" />
+}
+@section scripts
+    {
+    <script src="~/lib/jquery-easyui/jquery.easyui.min.js"></script>
+    <script src="~/lib/jquery-easyui/extensions/datagrid-pagerplus.js"></script>
+    <script src="~/lib/jquery-easyui/locale/easyui-lang-zh_CN.js"></script>
+    <environment names="Development">
+        <script src="~/view-resources/Views/Suppliers/index.js" asp-append-version="true"></script>
+    </environment>
+}
+
+<h1>供应商信息</h1>
+<table id="dg"></table>
+<div id="toolbar">
+
+    <a href="javascript:;" class="easyui-linkbutton" iconCls="icon-add" plain="true" id="badd">创建</a>
+    <a href="javascript:;" class="easyui-linkbutton" iconCls="icon-edit" plain="true" id="bedit">编辑</a>
+    <a href="javascript:;" class="easyui-linkbutton" iconCls="icon-remove" plain="true" id="bdel">删除</a>
+</div>
+<div id="dlg" modal="true" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px"
+     closed="true" buttons="#dlg-buttons">
+    @*<div style="padding:3px 5px;border-bottom:1px solid #ccc">供应商信息</div>
+    <form id="fm" method="post" novalidate>
+        <div class="fitem" style="padding:3px 5px">
+            <label>供应商名称:</label>
+            <input id="supplierName" name="SupplierName" class="easyui-textbox" required maxlength="32">
+        </div>
+        <div class="fitem" style="padding:3px 5px">
+            <label>联系方式:</label>
+            <input id="personTel" name="PersonTel" class="easyui-textbox" required maxlength="32">
+        </div>
+        <div class="fitem" style="padding:3px 5px">
+            <label>联系地址:</label>
+            <input id="supplierAddr" name="SupplierAddr" class="easyui-textbox" required maxlength="64">
+        </div>
+
+    </form>*@
+</div>
+<div id="dlg-buttons">
+    <a href="javascript:;" class="easyui-linkbutton saveMine" iconcls="icon-ok" style="width:90px">保存</a>
+    <a href="javascript:;" class="easyui-linkbutton" iconcls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')" style="width:90px">取消</a>
+</div>
+
+
+
+
+

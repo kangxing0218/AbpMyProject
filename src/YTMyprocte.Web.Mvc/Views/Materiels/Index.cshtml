@@ -1,0 +1,37 @@
+﻿@using YTMyprocte.Web.Startup
+@using YTMyprocte.Customers
+@model YTMyprocte.Web.Models.Materiels.CreateOrEditMaterielViewModel
+@section styles
+    {
+    <link href="~/lib/jquery-easyui/themes/color.css" rel="stylesheet" />
+    <link href="~/lib/jquery-easyui/themes/icon.css" rel="stylesheet" />
+    <link href="~/lib/jquery-easyui/themes/default/easyui.css" rel="stylesheet" />
+    <link href="~/lib/jquery-easyui/demo/demo.css" rel="stylesheet" />
+}
+@section scripts
+    {
+    <script src="~/lib/jquery-easyui/jquery.easyui.min.js"></script>
+    <script src="~/lib/jquery-easyui/extensions/datagrid-pagerplus.js"></script>
+    <script src="~/lib/jquery-easyui/locale/easyui-lang-zh_CN.js"></script>
+    <environment names="Development">
+        <script src="~/view-resources/Views/Materiels/index.js" asp-append-version="true"></script>
+    </environment>
+
+
+
+}
+<h1>物料信息</h1>
+<table id="dg" class="easyui-datagrid"></table>
+<div id="toolbar">
+    <a href="javascript:;" class="easyui-linkbutton" iconCls="icon-add" plain="true" id="btnadd">新增</a>
+    <a href="javascript:;" class="easyui-linkbutton" iconCls="icon-edit" plain="true" id="btnedit">修改</a>
+    <a href="javascript:;" class="easyui-linkbutton" iconCls="icon-remove" plain="true" id="btnremove">删除</a>
+</div>
+<div id="dlg" modal="true" class="easyui-dialog" style="width:400px;height:500px;padding:10px 20px"
+     closed="true" buttons="#dlg-buttons">
+</div>
+<div id="dlg-buttons">
+    <a href="javascript:;" class="easyui-linkbutton saveMine" iconcls="icon-ok" style="width:90px">保存</a>
+    <a href="javascript:;" class="easyui-linkbutton" iconcls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')" style="width:90px">取消</a>
+</div>
+

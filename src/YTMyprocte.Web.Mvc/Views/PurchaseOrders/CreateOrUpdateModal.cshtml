@@ -1,0 +1,94 @@
+﻿@using Abp.Extensions
+@using YTMyprocte.PurchaseOrders
+@model YTMyprocte.Web.Models.PurchaseOrders.CreateOrEditOrderViewModel
+
+
+@section styles
+    {
+    <link href="~/lib/jquery-easyui/themes/color.css" rel="stylesheet" />
+    <link href="~/lib/jquery-easyui/themes/icon.css" rel="stylesheet" />
+    <link href="~/lib/jquery-easyui/themes/default/easyui.css" rel="stylesheet" />
+    <link href="~/lib/jquery-easyui/demo/demo.css" rel="stylesheet" />
+}
+
+    <script src="~/view-resources/Views/PurchaseOrders/CreateOrEditModal.js"></script>
+
+<script src="~/lib/jquery-easyui/extensions/datagrid-cellediting.js"></script>
+
+@*<script src="~/lib/jquery-easyui/jquery.easyui.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>*@
+
+<form id="fm1" method="post" novalidate>
+    @if (Model.IsEditMode)
+    {
+        <input type="hidden" name="Id" value="@Model.Id" id="id" />
+        <input type="hidden" name="Code" value="@Model.Code" />@*入库单号*@
+    }
+    <div id="tt" class="easyui-tabs" data-options="border:false">
+        <div title="基本信息" style="margin-bottom:10px;margin-left:5px ">
+            <div class="fitem" style="margin-bottom:10px;margin-left:5px ">
+                <label>采购日期:</label>
+                <input id="buyTime" class="easyui-datebox" name="CreationTime" value="@(Model.IsEditMode ? Model.CreationTime.ToString() :"" )">
+               
+            </div>
+
+            <div class="fitem" style="margin-bottom:10px;margin-left:5px ">
+                <label>供应商名称:</label>
+                <select style="width:160px" name="SupplierId" id="selectSupplier" class="easyui-combobox">
+                    @foreach (var item in Model.Suppliers)
+                    {
+                        if (item.Id == Model.SupplierId)
+                        {
+                            <option value="@item.Id" selected="selected">@item.SupplierName</option>
+                        }
+                        else
+                        {
+                            <option value="@item.Id">@item.SupplierName</option>
+                        }
+
+                    }
+                </select>
+
+               
+            </div>
+
+
+            <hr />
+            <div id="tb">
+                <a href="javascript:;" class="easyui-linkbutton" iconCls="icon-add" plain="true" id="baddc">添加物料</a>
+                <a href="javascript:;" class="easyui-linkbutton" iconCls="icon-remove" plain="true" id="beditc">删除物料</a>
+            </div>
+            <table id="orderTable"></table>
+        </div>
+
+    </div>
+</form>
+
+
+
+
+<div id="dlggc" class="easyui-dialog" style="width:900px;height:500px;" modal="true" closed="true" buttons="#dlggc-buttons">
+    <div id="toolbar1">
+        <form>
+            <div>
+                关键字：<input name="Filter" class="Filter">
+                物料类型<input name="Category" class="Category">
+                <a href="javascript:;" class="btn-search">查询</a>
+                <a href="javascript:;" class="btn-clean">重置</a>
+            </div>
+
+        </form>
+    </div>
+    <table id="dgc"></table>
+</div>
+
+
+<div id="dlggc-buttons">
+    <a href="javascript:;" class="easyui-linkbutton saveMinec" iconcls="icon-ok" style="width:90px">保存</a>
+    <a href="javascript:;" class="easyui-linkbutton consolec" iconcls="icon-cancel"  style="width:90px">取消</a>
+</div>
+
+
+
+
+

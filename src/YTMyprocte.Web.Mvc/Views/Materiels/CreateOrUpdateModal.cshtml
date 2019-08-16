@@ -1,0 +1,54 @@
+﻿@using Abp.Extensions
+@using YTMyprocte.Customers
+@model YTMyprocte.Web.Models.Materiels.CreateOrEditMaterielViewModel
+
+<div id="dlg" class="easyui-tabs" data-options="border:false">
+    <div title="基本信息" style="margin:10px 20px;display:none;">
+        <form id="fm" method="post" novalidate>
+            @if (Model.IsEditMode)
+            {
+                <input type="hidden" name="Id" value="@Model.Id" />
+            }
+            <div class="fitem" style="padding:5px 2px">
+                <label>编码:</label>
+                <input name="Code" value="@(Model.IsEditMode ? Model.Code :"" )" class="easyui-textbox" required maxlength="32">
+            </div>
+            <div class="fitem" style="padding:5px 2px">
+                <label>商品名称:</label>
+                <input name="WaresName" value="@(Model.IsEditMode ? Model.WaresName :"" )" class="easyui-textbox" required maxlength="32">
+            </div>
+            <div class="fitem" style="padding:5px 2px">
+                <label>型号:</label>
+                <input name="WaresType" value="@(Model.IsEditMode ? Model.WaresType :"" )" class="easyui-textbox" required maxlength="32">
+            </div>
+            <div class="fitem" style="padding:5px 2px">
+                <label>规格:</label>
+                <input name="WaresFomat" value="@(Model.IsEditMode ? Model.WaresFomat :"" )" class="easyui-textbox" required maxlength="32">
+            </div>
+            <div class="fitem" style="padding:5px 2px">
+                <label>单位:</label>
+                <input name="WaresUnit" value="@(Model.IsEditMode ? Model.WaresUnit :"" )" class="easyui-textbox" required maxlength="32">
+            </div>
+            <div class="fitem" style="padding:5px 2px">
+                <label>生产厂家:</label>
+                <input name="Manufacturer" value="@(Model.IsEditMode ? Model.Manufacturer :"" )" class="easyui-textbox" required maxlength="32">
+            </div>
+            <div class="fitem" style="padding:5px 2px">
+                <label>品牌:</label>
+                <input name="Brands" value="@(Model.IsEditMode ? Model.Brands :"" )" class="easyui-textbox" required maxlength="32">
+            </div>
+            <div class="fitem" style="padding:5px 2px">
+                <label>采购价:</label>
+                <input name="BuyMoney" value="@(Model.IsEditMode ? Model.BuyMoney :"" )" class="easyui-validatebox" data-options="required:true,validType:'sellMoney'">
+            </div>
+            <div class="fitem" style="padding:5px 2px">
+                <label>销售价:</label>
+                <input name="SellMoney" value="@(Model.IsEditMode ? Model.SellMoney :"" )" class="easyui-validatebox" data-options="required:true,validType:'sellMoney'">
+            </div>
+
+
+
+        </form>
+         </div>
+    </div>
+

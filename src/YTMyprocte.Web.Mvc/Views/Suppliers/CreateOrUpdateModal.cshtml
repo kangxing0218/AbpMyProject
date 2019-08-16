@@ -1,0 +1,36 @@
+﻿@using Abp.Extensions
+@using Abp.Authorization.Users
+@using YTMyprocte.Web.Startup
+@using YTMyprocte.Suppliers
+@model YTMyprocte.Web.Models.Suppliers.CreateOrEditSupplierViewModel
+<form id="fm" method="post" novalidate>
+    @if (Model.IsEditMode)
+    {
+    <input type="hidden" name="Id" value="@Model.Id" />
+    }
+
+    <div id="tt" class="easyui-tabs" data-options="border:false">
+        <div title="基本信息" style="margin:10px 20px;display:none;">
+            <input type="hidden" name="Id" value="@Model.Id" />
+            <div class="fitem" style="padding:5px 2px">
+                <label>编码:</label>
+                <input name="Code" value="@(Model.IsEditMode ? Model.Code :"" )" class="easyui-textbox" required maxlength="32">
+            </div>
+            <div class="fitem" style="padding:5px 2px">
+                <label>供应商名称:</label>
+                <input name="SupplierName" value="@(Model.IsEditMode ? Model.SupplierName :"" )" class="easyui-textbox" required maxlength="32">
+            </div>
+
+            <div class="fitem" style="padding:5px 2px">
+                <label>联系方式:</label>
+                <input name="PersonTel" value="@(Model.IsEditMode ? Model.PersonTel :"" )" class="easyui-validatebox" data-options="required:true,validType:'telePhone'">
+            </div>
+            <div class="fitem" style="padding:5px 2px">
+                <label>联系地址:</label>
+                <input name="SupplierAddr" value="@(Model.IsEditMode ? Model.SupplierAddr :"")" class="easyui-textbox" required="required" maxlength="64">
+            </div>
+
+        </div>
+
+    </div>
+</form>
