@@ -8,6 +8,7 @@ namespace YTMyprocte.Customers.Dto
 {
     public class GetCustomerInput : PagedAndSortedInputDto, IShouldNormalize
     {
+
         public void Normalize()
         {
             if(string.IsNullOrEmpty(Sorting))
