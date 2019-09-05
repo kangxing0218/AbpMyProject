@@ -2,6 +2,9 @@
 using Abp.Modules;
 using Abp.Reflection.Extensions;
 using Abp.Zero.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Console;
 using YTMyprocte.EntityFrameworkCore.Seed;
 
 namespace YTMyprocte.EntityFrameworkCore
@@ -16,6 +19,13 @@ namespace YTMyprocte.EntityFrameworkCore
 
         public bool SkipDbSeed { get; set; }
 
+        public static readonly LoggerFactory MyLoggerFactory
+            = new LoggerFactory(new[]
+        {
+            new ConsoleLoggerProvider((category, level)
+                => category == DbLoggerCategory.Database.Command.Name
+                   && level == LogLevel.Information, true)
+        });
         public override void PreInitialize()
         {
             if (!SkipDbContextRegistration)
@@ -30,6 +40,8 @@ namespace YTMyprocte.EntityFrameworkCore
                     {
                         YTMyprocteDbContextConfigurer.Configure(options.DbContextOptions, options.ConnectionString);
                     }
+                    options.DbContextOptions.UseLoggerFactory(MyLoggerFactory);
+                    options.DbContextOptions.EnableSensitiveDataLogging(true);       //logging 不加密 development使用 !
                 });
             }
         }

@@ -23,16 +23,19 @@
                 rownumbers: true,
                 fitColumns:true,
                 toolbar: $mgtbr,
-                
-                frozenColumns: [[
-                    { field: 'id', title: '主键', width: 80, hidden: true },
-                    { field: 'code', title: '编码', width: 80 },
-                    { field: 'customerName', title: '客户名称', width: 120, sortable: true }
-                ]],
-                columns: [[
-                    { field: 'customerTel', title: '联系电话', width: 80, sortable: true },
-                    { field: 'customerAddr', title: '联系地址', width: 80, sortable: true }
-                ]]
+                columns: [
+                            [{ title: '客户信息表', width: 80,colspan:5 }],
+                            [
+                                { field: 'id', title: '主键',hidden:true, width: 30, rowspan: 2 },
+                                { field: 'code', title: '编码', align: 'center', width: 30,rowspan:2 },                        
+                                { field: 'customerName', title: '客户名称', width: 30, align: 'center', sortable: true,rowspan:2 },
+                                { title: '用户信息', width: 30, colspan: 2, align: 'center' }
+                            ],
+                            [//customerName     customerTel     
+                                { field: 'customerTel', title: '联系电话', width: 30, sortable: true,align: 'center' },
+                                { field: 'customerAddr', title: '联系地址', width: 30, sortable: true,align: 'center' }
+                            ],
+                          ]
             });
         
        //增加用户 

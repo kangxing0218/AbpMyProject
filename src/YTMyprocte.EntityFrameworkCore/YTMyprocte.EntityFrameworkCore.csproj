@@ -18,6 +18,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.2.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="2.2.0" />
     <PackageReference Include="pomelo.entityframeworkcore.mysql" Version="2.2.0" />
     <PackageReference Include="pomelo.entityframeworkcore.mysql.design" Version="1.1.2" />
   </ItemGroup>
